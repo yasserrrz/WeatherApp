@@ -79,7 +79,7 @@ The main component that manages the application's state and handles the API requ
 
 - **SearchBar**: Allows users to input a city name and search for weather data.
 - **WeatherDisplay**: Displays current weather information.
-- **ForecastDisplay**: Shows a brief 3-day weather forecast.
+- **ForecastDisplay**: Shows a brief 5-day weather forecast.
 
 ## Folder Structure
 
