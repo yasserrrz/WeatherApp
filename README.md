@@ -1,70 +1,116 @@
-# Getting Started with Create React App
+# Weather App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple, responsive weather application built with React that allows users to search for a city's weather information, including the current weather and a forecast for the next few days.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **City-based Search**: Users can enter a city name to retrieve weather data.
+- **Current Weather Display**: Shows temperature, humidity, and wind speed.
+- **5-Day Forecast**: Displays daily weather forecast at noon for five upcoming days using helper function called getDailyForecst(data).
+- **Error Handling**: Provides user-friendly error messages if the city is not found or if the API fails.
+- **Responsive Design**: Works smoothly on both desktop and mobile screens.
+- **Stylish UI**: Styled with SCSS for a clean and modern look (as much as possible :'D).
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: React, SCSS
+- **API**: [OpenWeatherMap API](https://openweathermap.org/api) for weather data
+- **Deployment**: Vercel for hosting
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Prerequisites
 
-### `npm test`
+Before you begin, ensure you have met the following requirements:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js and npm installed on your machine.
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the Repository**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   git clone https://github.com/yasserrrz/WeatherApp.git
+   cd weather-app
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Install Dependencies**
 
-### `npm run eject`
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Environment Variables**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   Create a `.env` file in the root directory and add your OpenWeatherMap API key:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```plaintext
+   REACT_APP_WEATHER_API_KEY=your_openweathermap_api_key 
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Usage
 
-## Learn More
+To start the app locally:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Code Splitting
+## Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+To deploy the app on Vercel:
 
-### Analyzing the Bundle Size
+1. Go to your Vercel dashboard and create a new project, linking it to your GitHub repository.
+2. Add the environment variable in Vercel’s dashboard:
+   - `REACT_APP_WEATHER_API_KEY` with your OpenWeatherMap API key.
+3. Deploy the project.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Code Overview
 
-### Making a Progressive Web App
+### `App.js`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The main component that manages the application's state and handles the API requests.
 
-### Advanced Configuration
+- **`handleSearch`**: Fetches weather data for the entered city and sets the data to display.
+- **`getDailyForecast`**: Extracts a daily forecast for the next 5 days, focusing on data at noon for each day; 
+   this function take the data and return the only the 12 pm weather without duplication , becaues the api provide the forecast weather every 3 hours/day .
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Components
 
-### Deployment
+- **SearchBar**: Allows users to input a city name and search for weather data.
+- **WeatherDisplay**: Displays current weather information.
+- **ForecastDisplay**: Shows a brief 3-day weather forecast.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Folder Structure
 
-### `npm run build` fails to minify
+```
+weather-app/
+├── public/
+├── src/
+│   ├── Components/
+│   │   ├── SearchBar.js
+│   │   ├── WeatherDisplay.js
+│   │   └── ForecastDisplay.js
+│   ├── App.js
+│   ├── App.scss
+│   └── index.js
+├── .env.example
+└── README.md
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Potential Improvements
+
+- Add more detailed weather information, such as hourly forecasts.
+- Enable geolocation for a more personalized experience.
+- Provide the option for different measurement units (e.g., Celsius/Fahrenheit).
+
+## Troubleshooting
+
+If you experience issues with the environment variables:
+
+- Double-check the variable naming in the `.env` file and ensure it matches `REACT_APP_WEATHER_API_KEY`.
+- Ensure you’ve redeployed the app after changing environment variables on Vercel.
+
+## License
+
+This project is just testing for Appgain company
