@@ -10,6 +10,11 @@
 
 # production
 /build
+# git 
+.git
+.history
+#  env
+.env
 
 # misc
 .DS_Store
