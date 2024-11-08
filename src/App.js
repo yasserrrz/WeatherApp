@@ -15,14 +15,14 @@ const App = () => {
     const dailyData = [];
     const days = new Set();
 
-    data.list.forEach((entry) => {
-      const date = new Date(entry.dt_txt);
+    data.list.forEach((item) => {
+      const date = new Date(item.dt_txt);
       const day = date.getDate()
       console.log("day" , day);
       console.log("date getHours" , date.getHours());
 
       if (date.getHours() === 12 && !days.has(day)) {
-        dailyData.push(entry);
+        dailyData.push(item);
         days.add(day);
       }
     })

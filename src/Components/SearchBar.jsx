@@ -14,10 +14,13 @@ const SearchBar = ({ city, setCity, handleSearch , setError }) => {
 
   useEffect(() => {
     if (!isFocused) {
-        searchInput.current.focus()
+        
         setError(null)
     }
   }, [isFocused])
+  useEffect(() => {
+      searchInput.current.focus()
+  } , [])
 
   return (
     <form className="search-bar">
